@@ -25,12 +25,12 @@ jobs:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run: php -r "copy('https://getcomposer.org/installer', '~/repo/composer-setup.php');"
-      - run: php -r "if (hash_file('SHA384', '~/repo/composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('~/repo/composer-setup.php'); } echo PHP_EOL;"
-      - run: php ~/repo/composer-setup.php
-      - run: php -r "unlink('~/repo/composer-setup.php');"
-      - run: php ~/repo/composer.phar self-update
-      - run: sudo mv ~/repo/composer.phar /usr/local/bin/composer
+      - run: php -r "copy('https://getcomposer.org/installer', '/home/circleci/repo/composer-setup.php');"
+      - run: php -r "if (hash_file('SHA384', '/home/circleci/repo/composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/home/circleci/repo/composer-setup.php'); } echo PHP_EOL;"
+      - run: php /home/circleci/repo/composer-setup.php
+      - run: php -r "unlink('/home/circleci/repo/composer-setup.php');"
+      - run: php /home/circleci/repo/composer.phar self-update
+      - run: sudo mv /home/circleci/repo/composer.phar /usr/local/bin/composer
 
       - run: composer install -n --prefer-dist
 
