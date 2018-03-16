@@ -1,7 +1,8 @@
 <?php
 
-  include 'common.php';
+  require_once 'common.php';
   require_once 'vendor/autoload.php';
+  require 'icalendar.php';
 
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -10,51 +11,42 @@
 
     $spreadSheet = readSpreadsheet($filename);
 
-    $workSheet = getWorksheet($spreadSheet, 0);
+    $worksheet = getWorksheet($spreadSheet, 0);
 
     $highestRow = $worksheet->getHighestRow();
     $highestColumn = $worksheet->getHighestColumn();
     $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
 
-    $currentYear = '2018';
-    $currentMonth = '';
-    $currentDay;
-    $currentTime = '';
-    $currentTimeZone = 'Europe/London';
-    date_default_timezone_set($currentTimeZone);
-    $eol = "\r\n";
-
-    $filename = $worksheet->getCellByColumnAndRow(1,1)->getValue();
-    $filename = str_replace(" ", "_", $filename);
+    $calendarFilename = getCalendarFilename($worksheet);
 
     header('Content-type: text/calendar');
-    header("Content-Disposition: inline; filename=$filename.ics");
+    header("Content-Disposition: inline; filename=$calendarFilename");
     header("Content-Transfer-Encoding: binary");
 
-    $calendar = 'BEGIN:VCALENDAR' . $eol . 'PRODID:-//tapirs technologies//EN' . $eol . 'VERSION:2.0' . $eol . 'CALSCALE:GREGORIAN' . $eol;
+    $calendar = new icalendar();
 
     for ($row = 2; $row <= $highestRow; ++$row) {
         for ($col = 1; $col <= $highestColumnIndex; ++$col) {
             $value = $worksheet->getCellByColumnAndRow($col, $row)->getValue();
             if($value != "") {
-              if(isMonth(trim($value))) {
-                $currentMonth = trim($value);
+              if(isMonth($value)) {
+                $calendar->setCurrentMonth($value)
               } elseif (isDate($value)) {
 
                 $reg_exp = '@\d+@i';
                 preg_match_all($reg_exp, $value, $matches, PREG_SET_ORDER, 0);
 
                 #var_dump($matches);
-                $currentDay = $matches[0][0];
+                $calendar->setCurrentDay($matches[0][0]);
                 #echo $currentDay . "<BR>";
 
               } elseif (isTime($value)) {
-                $currentTime = $value;
+                $calendar->setCurrentTime($value)
               }else {
                 if($currentTime == '') {
-                  $currentDateTime = date_create($currentDay . " " . $currentMonth . " " . $currentYear);
+                  $currentDateTime = date_create($calendar->getCurrentDay . " " . $calendar->getCurrentMonth . " " . $calendar->getCurrentYear);
                 } else {
-                  $currentDateTime = date_create($currentDay . " " . $currentMonth . " " . $currentYear . " " . $currentTime);
+                  $currentDateTime = date_create($calendar->getCurrentDay . " " . $calendar->getCurrentMonth . " " . $calendar->getCurrentYear . " " . $calendar->getCurrentTime);
                 }
 
                 if(strlen($value) > 50) {
@@ -65,9 +57,9 @@
                 $calendar = $calendar . 'UID:' . date('Ymd\THis') . '-' . rand(10000, 99999) . '@tapirs-technologies.co.uk' . $eol;
                 $calendar = $calendar . 'DTSTAMP:' . date('Ymd\THis') . $eol;
                 $calendar = $calendar . 'SUMMARY:' . $value . $eol;
-                $calendar = $calendar . 'DTSTART; TZID=' . $currentTimeZone . ':' . date_format($currentDateTime, "Ymd\THis") . $eol;
+                $calendar = $calendar . 'DTSTART; TZID=' . $calendar->getCurrentTimeZone . ':' . date_format($currentDateTime, "Ymd\THis") . $eol;
                 if($currentTime != '') {
-                    $calendar = $calendar . 'DTEND; TZID=' . $currentTimeZone . ":" . date_format(date_add($currentDateTime, date_interval_create_from_date_string("30 minutes")), "Ymd\THis") . $eol;
+                    $calendar = $calendar . 'DTEND; TZID=' . $calendar->getCurrentTimeZone . ":" . date_format(date_add($currentDateTime, date_interval_create_from_date_string("30 minutes")), "Ymd\THis") . $eol;
                 }
                 $calendar = $calendar . 'DESCRIPTION:' . $value . $eol;
                 $calendar = $calendar . 'BEGIN:VALARM' . $eol;
@@ -85,15 +77,17 @@
 
     $calendar = $calendar . 'END:VCALENDAR';
 
-    unset($filename);
-    if(unlink($filename)) {
-     echo "file deleted";
-   } else {
-     echo "file not removed";
-   }
+   //  unset($filename);
+   //  if(unlink($filename)) {
+   //   echo "file deleted";
+   // } else {
+   //   echo "file not removed";
+   // }
 
 
 
     echo $calendar;
+
+
   }
 ?>
