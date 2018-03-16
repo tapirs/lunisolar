@@ -19,9 +19,9 @@ jobs:
     steps:
       - checkout
 
-      #- run: sudo apt-get install libpng-dev
-      #- run: sudo docker-php-ext-install gd
-      #- run: sudo docker-php-ext-install zip
+      - run: sudo apt-get install libpng-dev
+      - run: sudo docker-php-ext-install gd
+      - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
       - restore_cache:
