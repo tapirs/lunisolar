@@ -1,18 +1,16 @@
 <?php
 
   include 'common.php';
-  require 'vendor/autoload.php';
+  require_once 'vendor/autoload.php';
 
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
   if(isset($_POST['filename'])) {
     $filename = $_POST['filename'];
 
-    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReaderForFile($filename);
-    $reader->setReadDataOnly(true);
-    $spreadsheet = $reader->load($filename);
+    $spreadSheet = readSpreadsheet($filename);
 
-    $worksheet = $spreadsheet->getSheet(0);
+    $workSheet = getWorksheet($spreadSheet, 0);
 
     $highestRow = $worksheet->getHighestRow();
     $highestColumn = $worksheet->getHighestColumn();
@@ -39,11 +37,11 @@
         for ($col = 1; $col <= $highestColumnIndex; ++$col) {
             $value = $worksheet->getCellByColumnAndRow($col, $row)->getValue();
             if($value != "") {
-              if(isMonth($value)) {
+              if(isMonth(trim($value))) {
                 $currentMonth = trim($value);
               } elseif (isDate($value)) {
 
-                $reg_exp = '@\d+@im';
+                $reg_exp = '@\d+@i';
                 preg_match_all($reg_exp, $value, $matches, PREG_SET_ORDER, 0);
 
                 #var_dump($matches);
