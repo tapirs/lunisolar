@@ -145,7 +145,7 @@ declare(strict_types=1);
   function getCalendarFilename($worksheet): string {
     $calendarFilename = $worksheet->getCellByColumnAndRow(1,1)->getValue();
     $calendarFilename = str_replace(" ", "_", $calendarFilename);
-    $calendarFilename = $calendarFilename . ".ics";
+    $calendarFilename = $calendarFilename;
 
     return $calendarFilename;
   }

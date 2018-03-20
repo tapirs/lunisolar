@@ -113,7 +113,7 @@ declare(strict_types=1);
     }
 
     public function testCanReadSpreadsheet(): void {
-      $filename = "uploads/JHSpring18Calendar161017.xlsx";
+      $filename = "uploads/JHSpring18Calendar161017-6.xlsx";
 
       #lets check the test file exists before we start
       $this->assertFileExists($filename);
@@ -124,23 +124,23 @@ declare(strict_types=1);
       #check an excpetion is thrown when the file doesnt exist
 
       $this->expectException(InvalidArgumentException::class);
-      $this->expectExceptionMessage("File \"uploads/JHSpring18Calendar161017.xlsx.bak\" does not exist.");
+      $this->expectExceptionMessage("File \"uploads/JHSpring18Calendar161017-6.xlsx.bak\" does not exist.");
 
       readSpreadsheet($filename . ".bak");
     }
 
     public function testCanGetWorkSheet(): void {
-      $filename = "uploads/JHSpring18Calendar161017.xlsx";
+      $filename = "uploads/JHSpring18Calendar161017-6.xlsx";
       $spreadSheet = readSpreadsheet($filename);
       $this->assertThat(getWorksheet($spreadSheet, 0), $this->logicalNot($this->IsNull()));
     }
 
     public function testCanGetCalendarFilename(): void {
-      $filename = "uploads/JHSpring18Calendar161017.xlsx";
+      $filename = "uploads/JHSpring18Calendar161017-6.xlsx";
       $spreadSheet = readSpreadsheet($filename);
       $worksheet = getWorksheet($spreadSheet, 0);
 
-      $this->assertEquals(getCalendarFilename($worksheet), "SPRING_TERM_2018_JUNIOR_HOUSE_CALENDAR.ics");
+      $this->assertEquals(getCalendarFilename($worksheet), "SPRING_TERM_2018_JUNIOR_HOUSE_CALENDAR");
     }
   }
 

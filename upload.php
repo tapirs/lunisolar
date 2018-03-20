@@ -1,6 +1,6 @@
 <?php
   $target_dir = "uploads/";
-  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+  $target_file = $target_dir . rand(10000, 99999) . basename($_FILES["fileToUpload"]["name"]);
   $uploadOk = 1;
   $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
@@ -39,7 +39,7 @@
         <script type=\"text/javascript\">
           document.getElementById('ical_form').submit();
         </script>";
-          #echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
