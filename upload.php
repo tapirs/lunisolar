@@ -71,13 +71,12 @@ echo '<!DOCTYPE html>
             echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
             <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
+            <button class='btn btn-default'><a href='index.php'>upload another file</a></button>
             </form>
 
             <script type=\"text/javascript\">
               document.getElementById('ical_form').submit();
             </script>";
-
-            echo "<a href='index.php' class='btn btn-default'>upload another file</a>";
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
