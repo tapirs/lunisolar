@@ -7,11 +7,11 @@ echo '<!DOCTYPE html>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>tapirs-technologies.co.uk - home</title>
-    <meta name="description" content="tapirs technologies - agile i.t. - open source, enterprise class and automation for all" />'
+    <meta name="description" content="tapirs technologies - agile i.t. - open source, enterprise class and automation for all" />';
 
-    readfile('../../../common/head.htm')
+    readfile('../../../common/head.htm');
   echo '</head>
-  <body style="background-color:#eceeef" data-spy="scroll" data-target=".navbar-nav-middle" data-offset="50">'
+  <body style="background-color:#eceeef" data-spy="scroll" data-target=".navbar-nav-middle" data-offset="50">';
 
     readfile('../../..//navbar.htm');
 
@@ -20,7 +20,7 @@ echo '<!DOCTYPE html>
       <p class="lead">{convert excel spreadsheets into calendar files for outlook and google calendar}</p>
       <hr class="my-4">
       <p></p>
-    </div>'
+    </div>';
 
       $target_dir = "uploads/";
       $target_file = $target_dir . rand(10000, 99999) . basename($_FILES["fileToUpload"]["name"]);
