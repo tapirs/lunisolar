@@ -24,7 +24,8 @@ echo '<!DOCTYPE html>
 
       $target_dir = "uploads/";
       $target_file = $target_dir . rand(10000, 99999) . basename($_FILES["fileToUpload"]["name"]);
-      $uploadOk = 1;
+      $uploadOk = 0;
+      $uploadError = "";
       $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
       // Check if image file is a actual image or fake image
       if(isset($_POST["submit"])) {
@@ -33,27 +34,36 @@ echo '<!DOCTYPE html>
 
       // Check if file already exists
       if (file_exists($target_file)) {
-          echo "Sorry, file already exists.";
-          $uploadOk = 0;
+          $uploadError = "file already exists.";
+          $uploadOk = 1;
       }
 
       // Check file size
       if ($_FILES["fileToUpload"]["size"] > 500000) {
-          echo "Sorry, your file is too large.";
-          $uploadOk = 0;
+          $uploadError = "your file is too large.";
+          $uploadOk = 2;
       }
 
       // Allow certain file formats
       if($fileType != "xls" && $fileType != "xlsx" ) {
-          echo "Sorry, only XLS & XLSX files are allowed.";
-          $uploadOk = 0;
+          $uploadError = "Sorry, only XLS & XLSX files are allowed.";
+          $uploadOk = 3;
       }
 
-
+      echo '<div class="container">'
 
       // Check if $uploadOk is set to 0 by an error
-      if ($uploadOk == 0) {
-          echo "Sorry, your file was not uploaded.";
+      if ($uploadOk != 0) {
+          echo "<p>sorry, your file was not uploaded.<p>";
+
+          if ($uploadOk == 3) {
+            echo "<p>it looks like you tried to upload a file that wasn't an xls or xlsx file<p>"
+          } else {
+            echo "<p>if the problem persists then please fill out <a href='/contact_us.php'>this contact form</a> and add the following error code<p>";
+            echo "<code>" . base64_encode($uploadError) . "</code>";
+
+            echo "<p>click <a href='index.php'>here</a> to try again";
+          }
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -70,7 +80,8 @@ echo '<!DOCTYPE html>
           }
       }
 
-  echo '</body>
+  echo '</div>
+  </body>
 </html>'
 
 ?>
