@@ -71,7 +71,7 @@ echo '<!DOCTYPE html>
             echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
             <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
-            <a class='btn btn-default' href='index.php' role='button'>upload another file</a>
+            <a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>
             </form>
 
             <script type=\"text/javascript\">
