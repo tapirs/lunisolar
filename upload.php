@@ -61,22 +61,23 @@ echo '<!DOCTYPE html>
           } else {
             echo "<p>if the problem persists then please fill out <a href='/contact_us.php'>this contact form</a> and add the following error code<p>";
             echo "<code>" . base64_encode($uploadError) . "</code>";
-
-            echo "<p>click <a href='index.php'>here</a> to try again";
           }
+
+          echo "<p>click <a href='index.php'>here</a> to try again";
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<p>your file has been uploaded and you calendar file should start to download automatically, if it does not then click the download button below.<p>";
+            echo "<p>your file has been uploaded and you calendar file should start to download automatically</p><p>if it doesn't then click the download button below.<p>";
             echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
-            <input type=\"submit\" name=\"submit\" value=\"download\">
+            <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
             </form>
 
             <script type=\"text/javascript\">
               document.getElementById('ical_form').submit();
             </script>";
 
+            echo "<a href='index.php' class='btn btn-default'>upload another file</a>";
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
