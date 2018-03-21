@@ -13,7 +13,7 @@ echo '<!DOCTYPE html>
   echo '</head>
   <body style="background-color:#eceeef" data-spy="scroll" data-target=".navbar-nav-middle" data-offset="50">';
 
-    readfile('../../..//navbar.htm');
+    readfile('../../../common/navbar.htm');
 
     echo '<div class="jumbotron text-center" style="margin-bottom:0px">
       <h1 class="display-4">{lunisolar}</h1>
@@ -50,7 +50,7 @@ echo '<!DOCTYPE html>
           $uploadOk = 3;
       }
 
-      echo '<div class="container">'
+      echo '<div class="container">';
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk != 0) {
@@ -67,8 +67,10 @@ echo '<!DOCTYPE html>
       // if everything is ok, try to upload file
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "<p>your file has been uploaded and you calendar file should start to download automatically, if it does not then click the download button below.<p>";
             echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
+            <input type=\"submit\" name=\"submit\" value=\"download\">
             </form>
 
             <script type=\"text/javascript\">
