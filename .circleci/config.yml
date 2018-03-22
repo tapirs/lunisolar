@@ -29,12 +29,6 @@ jobs:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      #- run: php -r "copy('https://getcomposer.org/installer', '/home/circleci/repo/composer-setup.php');"
-      #- run: php -r "if (hash_file('SHA384', '/home/circleci/repo/composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/home/circleci/repo/composer-setup.php'); } echo PHP_EOL;"
-      #- run: php /home/circleci/repo/composer-setup.php
-      #- run: php -r "unlink('/home/circleci/repo/composer-setup.php');"
-      #- run: php /home/circleci/repo/composer.phar self-update
-      #- run: sudo mv /home/circleci/repo/composer.phar /usr/local/bin/composer
 
       - run: composer install -n --prefer-dist
 
@@ -44,4 +38,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       # run tests!
-      - run: vendor/bin/phpunit ~/repo/tests
+      - run: vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-text --whitelist . --testdox tests ~/repo/tests

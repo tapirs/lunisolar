@@ -2,7 +2,7 @@
 
   require_once 'common.php';
   require_once 'vendor/autoload.php';
-  require 'icalendar.php';
+  require_once 'icalendar.php';
 
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
 

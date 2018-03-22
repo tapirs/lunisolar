@@ -8,11 +8,15 @@
     <title>tapirs-technologies.co.uk - home</title>
     <meta name="description" content="tapirs technologies - agile i.t. - open source, enterprise class and automation for all" />
 
-    <?php readfile('../../../common/head.htm')?>
+    <?php
+      // @codeCoverageIgnoreStart
+      readfile('../../../common/head.htm')
+      // @codeCoverageIgnoreEnd
+    ?>
   </head>
   <body style="background-color:#eceeef" data-spy="scroll" data-target=".navbar-nav-middle" data-offset="50">
 
-    <?php include('../../..//navbar.htm');?>
+    <?php include('../../../navbar.htm');?>
 
     <div class="jumbotron text-center" style="margin-bottom:0px">
       <h1 class="display-4">{lunisolar}</h1>
