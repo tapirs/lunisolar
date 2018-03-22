@@ -73,7 +73,7 @@ echo '<!DOCTYPE html>
             <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
             </form>
 
-            echo '<hr class="my-4"><a href="index.php" role="button"><-upload another file</a>';
+            <hr class=\"my-4\"><a href=\"index.php\" role="button"><-upload another file</a>
 
             <script type=\"text/javascript\">
               document.getElementById('ical_form').submit();
