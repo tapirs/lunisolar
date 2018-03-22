@@ -10,13 +10,13 @@
 
     <?php
       // @codeCoverageIgnoreStart
-      readfile('../../../common/head.htm')
+      readfile('../../../common/head.htm');
       // @codeCoverageIgnoreEnd
     ?>
   </head>
   <body style="background-color:#eceeef" data-spy="scroll" data-target=".navbar-nav-middle" data-offset="50">
 
-    <?php include('../../../navbar.htm');?>
+    <?php include('../../../common/navbar.htm');?>
 
     <div class="jumbotron text-center" style="margin-bottom:0px">
       <h1 class="display-4">{lunisolar}</h1>

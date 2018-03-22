@@ -50,7 +50,7 @@ echo '<!DOCTYPE html>
           $uploadOk = 3;
       }
 
-      echo '<div class="container">';
+      echo '<div class="container bg-white">';
 
       // Check if $uploadOk is set to 0 by an error
       if ($uploadOk != 0) {
@@ -71,12 +71,13 @@ echo '<!DOCTYPE html>
             echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
             <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
-            <a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>
             </form>
 
             <script type=\"text/javascript\">
               document.getElementById('ical_form').submit();
             </script>";
+
+            echo "<a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>"
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
