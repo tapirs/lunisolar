@@ -77,7 +77,7 @@ echo '<!DOCTYPE html>
               document.getElementById('ical_form').submit();
             </script></div>";
 
-            echo "<span><a href='index.php' role='button'><-upload another file</a><span>";
+            echo "<hr class="my-4"><a href='index.php' role='button'><-upload another file</a><";
           } else {
               echo "Sorry, there was an error uploading your file.";
           }

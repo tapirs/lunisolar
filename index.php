@@ -56,7 +56,9 @@
 
               <p>if you haven't created one yet you can download a template <a href="template.xlsx">here</a></p>
 
-              <p>the hit the upload button and your calendar file will download automatically</p>
+              <p>then hit the upload button and your calendar file will download automatically</p>
+
+              <p>opening the ics file will add it to the default calendar application on your computer/phone</p>
 
               <p><strong>some rules</strong></p>
 
@@ -84,7 +86,17 @@
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <p>if you need to add the calendar file to outlook</p>
+
+              <p>download the ics file to your computer</p>
+
+              <p>open up outlook and click on the "file" menu</p>
+
+              <p>click "Open & Export" and then click on the "Open Calendar"</p>
+
+              <p>browse to where the calendar file is downloaded and click open</p>
+
+              <p>all events should now be added to your calendar</p>
             </div>
           </div>
         </div>
@@ -98,7 +110,21 @@
           </div>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <p>if you need to add the calendar to google</p>
+
+              <p>download the ics file to your computer</p>
+
+              <p>goto <a href="https://calendar.google.com">google calendar</a> and login</p>
+
+              <p>click on the settings cog and click "settings"</p>
+
+              <p>click "import & export"</p>
+
+              <p>click "select file from your computer" and browse for the calendar file</p>
+
+              <p>click import and a message should appear to say all events have been imported</p>
+
+              <p>n.b. make sure you have the time zone set to Europe/London</p>
             </div>
           </div>
         </div>
