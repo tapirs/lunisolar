@@ -131,6 +131,6 @@
       </div>
     </div>
 
-    <?php include('../../../common/navbar.htm');?>
+    <?php include('../../../common/footer.htm');?>
   </body>
 </html>

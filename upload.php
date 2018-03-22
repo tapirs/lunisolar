@@ -84,7 +84,7 @@ echo '<!DOCTYPE html>
       }
 
   echo '</div>';
-  include('../../../common/navbar.htm');
+  include('../../../common/footer.htm');
   echo '</body>
 </html>'
 
