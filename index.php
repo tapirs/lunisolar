@@ -130,5 +130,7 @@
         </div>
       </div>
     </div>
+
+    <?php include('../../../common/navbar.htm');?>
   </body>
 </html>

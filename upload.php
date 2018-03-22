@@ -83,8 +83,9 @@ echo '<!DOCTYPE html>
           }
       }
 
-  echo '</div>
-  </body>
+  echo '</div>';
+  include('../../../common/navbar.htm');
+  echo '</body>
 </html>'
 
 ?>
