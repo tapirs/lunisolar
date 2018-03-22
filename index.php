@@ -72,7 +72,11 @@
 
               <p>you can have multiple events per day just make sure they go onto seperate rows</p>
 
+              <p>if you need to send out updates to the events in this calendar then you'll need to add a version number to the end of the excel file name</p>
 
+              <p>for example spring-term.xlsx would be version 1 and spring-term-2.xlsx would be version 2</p>
+
+              <p>the version numbers are important as without them a new calendar at the same version would create copies of all events rather than updating the existing ones</p>
             </div>
           </div>
         </div>
