@@ -68,16 +68,16 @@ echo '<!DOCTYPE html>
       } else {
           if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             echo "<p>your file has been uploaded and you calendar file should start to download automatically</p><p>if it doesn't then click the download button below.<p>";
-            echo "<form id=\"ical_form\" action=\"ical.php\" method=\"post\">
+            echo "<div><form id=\"ical_form\" action=\"ical.php\" method=\"post\">
             <input type=\"hidden\" name=\"filename\" value=\"$target_file\">
             <input type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"download\">
             </form>
 
             <script type=\"text/javascript\">
               document.getElementById('ical_form').submit();
-            </script>";
+            </script></div>";
 
-            echo "<a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>";
+            echo "<avhref='index.php' role='button'><-upload another file</a>";
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
