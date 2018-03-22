@@ -77,11 +77,7 @@ echo '<!DOCTYPE html>
               document.getElementById('ical_form').submit();
             </script>";
 
-<<<<<<< HEAD
             echo "<a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>";
-=======
-            echo "<a class='btn btn-secondary' href='index.php' role='button'>upload another file</a>"
->>>>>>> dbf2842a70a14046e36f1940803f1633a5714452
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
