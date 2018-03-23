@@ -38,4 +38,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       # run tests!
-      - run: vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-text --whitelist . --testdox tests ~/repo/tests
+      - run: vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-text --testdox tests ~/repo/tests
