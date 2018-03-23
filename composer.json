@@ -1,7 +1,7 @@
 {
   "require": {
     "phpoffice/phpspreadsheet": "1.1.0",
-    "php": "^5.6|^7.0",
+    "php": "^7.1",
     "ext-ctype": "*",
     "ext-dom": "*",
     "ext-gd": "*",
